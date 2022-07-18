@@ -1,8 +1,6 @@
 import os
 import shutil
 import sys
-from unicodedata import name
-import requests
 import json
 import urllib.request
 import urllib.error
@@ -12,7 +10,7 @@ import subprocess
 import openpyxl
 import PySimpleGUI as sg
 
-sg.theme('DarkTeal7')
+sg.theme('Default1')
 
 PATH = sys.path[0].replace("\\", "/")
 ARKTOOL = "https://github.com/Qowyn/ark-tools/releases/download/v0.6.4/ark-tools.zip"

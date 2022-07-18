@@ -1,3 +1,7 @@
 /ArkTools
 /temp
 /export
+/dist
+/build
+__pycache__
+*.spec
