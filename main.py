@@ -64,10 +64,25 @@ def scrapeTribes(path: str) -> list:
 
 def scrapeMembers(path: str) -> dict:
     tribeData = json.load(
-        open(os.path.join(PATH, f"temp/{path}"), "r", encoding="utf-8"))
-    tribeName = tribeData["tribe"]["properties"][0]["value"][0]["value"]
-    tribeMembersName = tribeData["tribe"]["properties"][0]["value"][3]["value"]
-    tribeMembersID = tribeData["tribe"]["properties"][0]["value"][4]["value"]
+        open(
+            os.path.join(
+                PATH, f"temp/{path}"
+            ),
+            "r",
+            encoding="utf-8"
+        )
+    )
+    for i in tribeData["tribe"]["properties"]:
+        if i["name"] == "TribeData":
+            tribeProperties = i
+            break
+    for i in tribeProperties["value"]:
+        if i["name"] == "TribeName":
+            tribeName: str = i["value"]
+        elif i["name"] == "MembersPlayerName":
+            tribeMembersName: list = i["value"]
+        elif i["name"] == "MembersPlayerDataID":
+            tribeMembersID: list = i["value"]
     cellData = [["Name", "ID"]]
     for i in range(len(tribeMembersName)):
         cellData.append([tribeMembersName[i], tribeMembersID[i]])
